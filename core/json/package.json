@@ -1,0 +1,14 @@
+{
+  "name": "latihan-json",
+  "private": true,
+  "description": "Latihan JSON Minggu 1 SiPenugasan",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}
