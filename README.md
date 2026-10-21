@@ -17,7 +17,7 @@ Latihan minggu berikutnya ditambahkan ke folder `developer/` dan `qa/`.
 ## Langkah memulai (wajib, bagian dari Checkpoint 1)
 
 1. Klik **Use this template → Create a new repository**, lalu pilih **Private**. Nama repo bebas, misalnya `latihan-pre-intern`.
-2. Buka **Settings → Collaborators → Add people**, lalu undang akun validator: **`<VALIDATOR_GITHUB>`**.
+2. Buka **Settings → Collaborators → Add people**, lalu undang akun validator: **`Dwdun`**.
 3. Clone repo milikmu ke komputer.
 4. Buat branch: `git switch -c fitur/latihan-minggu-1`.
 5. Kerjakan file di `core/sql/queries/` dan `core/json/src/`. Jalankan tes lokal sesering mungkin.
