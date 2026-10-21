@@ -95,6 +95,14 @@ class SqlHarnessTest {
     }
 
     @Test
+    void queryTanpaUjungDihentikan() {
+        String q = "WITH RECURSIVE r(n) AS (SELECT 1 UNION ALL SELECT n + 1 FROM r) SELECT COUNT(*) FROM r";
+        LatihanException e = org.junit.jupiter.api.Assertions.assertTimeoutPreemptively(
+                java.time.Duration.ofSeconds(60), () -> assertThrows(LatihanException.class, () -> jalankan(q)));
+        assertTrue(e.getMessage().startsWith("Query gagal dijalankan"), e.getMessage());
+    }
+
+    @Test
     void querySalahSintaksDibungkusPesanIndonesia() {
         LatihanException e = assertThrows(LatihanException.class, () -> jalankan("SELECT nama FORM pegawai"));
         assertTrue(e.getMessage().startsWith("Query gagal dijalankan"), e.getMessage());

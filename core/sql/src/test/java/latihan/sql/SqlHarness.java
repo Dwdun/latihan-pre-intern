@@ -24,6 +24,7 @@ import org.h2.tools.RunScript;
 public final class SqlHarness {
 
     private static final Pattern AWAL_SELECT = Pattern.compile("^(SELECT|WITH)\\b", Pattern.CASE_INSENSITIVE);
+    private static final int BATAS_DETIK_QUERY = 10;
 
     private SqlHarness() {
     }
@@ -38,9 +39,11 @@ public final class SqlHarness {
             buatUserKandidat(admin);
 
             try (Connection kandidat = DriverManager.getConnection(url, "KANDIDAT", "kandidat");
-                    Statement st = kandidat.createStatement();
-                    ResultSet rs = st.executeQuery(sql)) {
-                return bacaBaris(rs);
+                    Statement st = kandidat.createStatement()) {
+                st.setQueryTimeout(BATAS_DETIK_QUERY);
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    return bacaBaris(rs);
+                }
             }
         } catch (SQLException e) {
             throw new LatihanException("Query gagal dijalankan: " + e.getMessage(), e);
