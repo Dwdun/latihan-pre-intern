@@ -1,0 +1,1 @@
+-- Tulis query kamu di bawah baris ini
