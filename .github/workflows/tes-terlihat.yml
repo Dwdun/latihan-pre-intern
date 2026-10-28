@@ -4,8 +4,13 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   sql:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,6 +25,8 @@ jobs:
       - run: ./mvnw -B test
 
   json:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -33,3 +40,108 @@ jobs:
           cache-dependency-path: core/json/package-lock.json
       - run: npm ci
       - run: npm test
+
+  # Minggu 2-3. Job jalur lain boleh merah: kerjakan folder jalurmu saja.
+  react:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dev/react
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: dev/react/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  java:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dev/java
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+      - run: ./mvnw -B test
+
+  qa-unit:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: qa/unit
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: qa/unit/package-lock.json
+      - run: npm ci
+      - run: npm run cek
+
+  qa-api:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: qa/api
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: qa/api/package-lock.json
+      - run: npm ci
+      - run: npm run cek
+
+  # Hanya di repo template: setiap starter harus gagal dengan pesan yang dijanjikan README.
+  starter:
+    if: ${{ github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: "25"
+          cache: maven
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Pasang dependensi Node
+        run: for d in core/json dev/react qa/unit qa/api; do (cd "$d" && npm ci); done
+      - name: Starter gagal dengan pesan yang benar
+        shell: bash
+        run: |
+          cek() {
+            local dir=$1 pesan=$2; shift 2
+            local out
+            if out=$(cd "$dir" && "$@" 2>&1); then
+              echo "::error::$dir lulus padahal file jawaban masih starter"; exit 1
+            fi
+            if ! grep -q "$pesan" <<<"$out"; then
+              tail -30 <<<"$out"; echo "::error::$dir tidak menampilkan '$pesan'"; exit 1
+            fi
+            echo "OK $dir: gagal dengan '$pesan'"
+          }
+          cek core/sql "File jawaban kosong" ./mvnw -B -q test
+          cek core/json "Belum dikerjakan" npm test
+          cek dev/react "Belum dikerjakan" npm test
+          cek dev/java "Belum dikerjakan" ./mvnw -B -q test
+          cek qa/unit "Belum ada tes yang berjalan" npm run cek
+          cek qa/api "Belum ada tes yang berjalan" npm run cek

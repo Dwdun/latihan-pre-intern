@@ -1,0 +1,7 @@
+{
+  "target": "src/server.js",
+  "bug": [
+    { "nama": "proyek yang tidak ada dibalas 200 dengan body null", "cari": "if (!proyek) return gagal(res, 404, \"proyek tidak ditemukan\");", "ganti": "if (!proyek) return kirim(res, 200, null);" },
+    { "nama": "jam negatif diterima (hanya 0 yang ditolak)", "cari": "body.jam < 1 ||", "ganti": "body.jam === 0 ||" }
+  ]
+}

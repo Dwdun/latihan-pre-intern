@@ -1,0 +1,15 @@
+{
+  "name": "latihan-qa-unit",
+  "private": true,
+  "description": "Latihan QA Minggu 2 SiPenugasan: menulis unit test",
+  "scripts": {
+    "test": "jest",
+    "cek": "node cek.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}

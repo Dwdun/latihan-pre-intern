@@ -1,0 +1,7 @@
+{
+  "target": "src/sipenugasan.js",
+  "bug": [
+    { "nama": "laporan memakai nama klien, bukan nama proyek", "cari": "nama: p.nama", "ganti": "nama: p.klien" },
+    { "nama": "total menghitung banyaknya penugasan, bukan jam", "cari": "total += penugasan[i].jam;", "ganti": "total += 1;" }
+  ]
+}

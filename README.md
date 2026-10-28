@@ -2,17 +2,22 @@
 
 Repository template untuk latihan kode modul pre-intern. Sepanjang modul kamu membangun **SiPenugasan**, aplikasi software house untuk menugaskan pegawai ke proyek klien.
 
-| Folder | Latihan | Minggu |
-|---|---|---|
-| [core/sql](core/sql/README.md) | Query SQL (`w1-sql-01` s.d. `03`) | 1 |
-| [core/json](core/json/README.md) | Mengolah JSON dengan JavaScript (`w1-json-01` s.d. `03`) | 1 |
+| Folder | Latihan | Minggu | Jalur |
+|---|---|---|---|
+| [core/sql](core/sql/README.md) | Query SQL (`w1-sql-01` s.d. `03`) | 1 | semua |
+| [core/json](core/json/README.md) | Mengolah JSON dengan JavaScript (`w1-json-01` s.d. `03`) | 1 | semua |
+| [dev/react](dev/react/README.md) | Komponen React: daftar proyek dan form penugasan (`w2-react-01`, `02`) | 2 | Developer |
+| [dev/java](dev/java/README.md) | Validasi dan laporan jam dengan Java (`w3-java-01`, `02`) | 3 | Developer |
+| [qa/unit](qa/unit/README.md) | Menulis unit test yang menangkap bug (`w2-qa-unit-01`, `02`) | 2 | QA |
+| [qa/api](qa/api/README.md) | Menulis tes API yang menangkap bug (`w3-qa-api-01`, `02`) | 3 | QA |
 
-Latihan minggu berikutnya ditambahkan ke folder `developer/` dan `qa/`.
+Kerjakan folder `core/` dan folder jalurmu saja (`dev/` untuk Developer, `qa/` untuk QA). Latihan jalur lain tidak dinilai.
 
 ## Prasyarat
 
 - JDK **25** (Eclipse Temurin), Node.js **24 LTS**, dan Git. Lihat materi **Setup Lingkungan Kerja** di Frappe LMS.
-- Maven tidak perlu dipasang. Gunakan `./mvnw` (Windows: `mvnw.cmd`).
+- Maven tidak perlu dipasang. Gunakan `./mvnw` (Windows: `.\mvnw.cmd`).
+- Setiap folder JavaScript (`core/json`, `dev/react`, `qa/unit`, `qa/api`) punya `package.json` sendiri. Jalankan `npm install` di folder itu sekali sebelum `npm test`.
 
 ## Langkah memulai (wajib, bagian dari Checkpoint 1)
 
@@ -29,8 +34,17 @@ Penilai memeriksa bahwa repo dibuat dari template ini, ada PR dari branch fitur 
 
 ## Yang dinilai dan yang tidak
 
-- Penilai hanya membaca **file jawaban**: `core/sql/queries/*.sql` dan `core/json/src/w1-json.js`.
-- Perubahan pada file tes (`src/test`, `test/`), data (`data/`), atau workflow (`.github/`) **tidak berpengaruh**, karena penilai memakai salinan miliknya sendiri dan tes dengan data lain.
+- Penilai hanya membaca **file jawaban**:
+
+  | Minggu | Developer | QA |
+  |---|---|---|
+  | 1 | `core/sql/queries/*.sql`, `core/json/src/w1-json.js` | (sama) |
+  | 2 | `dev/react/src/w2-react.jsx` | `qa/unit/test/w2-qa-unit-01.test.js`, `w2-qa-unit-02.test.js` |
+  | 3 | `dev/java/src/main/java/latihan/java/PenugasanValidator.java`, `LaporanJam.java` | `qa/api/test/w3-qa-api-01.test.js`, `w3-qa-api-02.test.js` |
+
+- Perubahan pada file lain, termasuk tes terlihat (`src/test`, `dev/react/test/`), data (`data/`), implementasi QA (`qa/*/src/`), atau workflow (`.github/`), **tidak berpengaruh**, karena penilai memakai salinan miliknya sendiri dan tes dengan data lain.
+- Untuk latihan QA, file tesmu **adalah** jawabannya: penilai menjalankannya terhadap implementasi benar dan beberapa versi berbug yang tidak kamu lihat. Lihat README `qa/unit`.
+- Penilai memakai isi branch `main`. Untuk minggu 2 dan 3, ulangi alur branch → PR → merge (misalnya branch `fitur/latihan-minggu-2`).
 - Setiap push menjalankan tes terlihat di tab **Actions** GitHub. Hijau berarti tes terlihat lulus, tetapi belum tentu semua tes penilai lulus.
 
 ## Jika tes gagal

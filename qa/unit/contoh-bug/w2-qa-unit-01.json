@@ -1,0 +1,7 @@
+{
+  "target": "src/sipenugasan.js",
+  "bug": [
+    { "nama": "jam 1 ditolak", "cari": "jam < 1 ||", "ganti": "jam <= 1 ||" },
+    { "nama": "pegawai kosong tidak ditolak", "cari": "error.push(PESAN.PEGAWAI_KOSONG);", "ganti": "// lupa menolak pegawai kosong" }
+  ]
+}
