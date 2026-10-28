@@ -1,0 +1,24 @@
+{
+  "name": "latihan-react",
+  "private": true,
+  "description": "Latihan React Minggu 2 SiPenugasan",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "target": "src/server.js",
+  "bug": [
+    { "nama": "GET /api/proyek membungkus array di dalam objek { data }", "cari": "return kirim(res, 200, data.proyek);", "ganti": "return kirim(res, 200, { data: data.proyek });" },
+    { "nama": "DELETE membalas 204 tetapi penugasan tidak terhapus", "cari": "data.penugasan.splice(indeks, 1);", "ganti": "" }
+  ]
+}
