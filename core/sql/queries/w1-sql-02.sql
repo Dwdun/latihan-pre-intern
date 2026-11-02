@@ -1,1 +1,26 @@
+-- Latihan w1-sql-02: Total jam per proyek
+--
+-- SOAL
+--   Untuk setiap proyek yang PUNYA penugasan, tampilkan nama proyek dan total jam seluruh penugasannya.
+--
+-- KOLOM HASIL
+--   Dua kolom, berurutan: nama_proyek, total_jam
+--   Urutan baris tidak dinilai. Proyek tanpa penugasan tidak ditampilkan.
+--
+-- TABEL YANG DIPAKAI
+--   proyek(id, nama, klien), penugasan(pegawai_id, proyek_id, jam)
+--   Data contoh yang kamu lihat: ../data/seed-visible.sql
+--
+-- CARA MENGERJAKAN
+--   1. Tulis SATU query SELECT (boleh diawali WITH), ditutup titik koma,
+--      di bawah baris terakhir komentar ini. Jangan ubah file lain.
+--   2. Jalankan tes dari folder core/sql (bukan dari folder queries):
+--        ./mvnw test -Dtest=W1Sql02Test       (Windows: mvnw.cmd test -Dtest=W1Sql02Test)
+--      Sebelum kamu menulis query, tes gagal dengan "File jawaban kosong". Itu normal.
+--   3. Kalau tes gagal, baca baris pertama pesannya. Artinya ada di core/sql/README.md.
+--   4. Kalau sudah hijau: commit, push, buka pull request ke main, lalu merge.
+--
+-- CATATAN: penilai memakai data lain yang tidak kamu lihat, jadi jangan menulis
+-- query yang hanya cocok untuk data contoh. Komentar tidak ikut dinilai.
+--
 -- Tulis query kamu di bawah baris ini

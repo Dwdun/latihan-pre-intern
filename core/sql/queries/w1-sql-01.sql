@@ -1,1 +1,26 @@
+-- Latihan w1-sql-01: Pegawai aktif divisi Engineering
+--
+-- SOAL
+--   Tampilkan nama semua pegawai yang AKTIF dan berada di divisi 'Engineering', diurutkan berdasarkan nama dari A ke Z.
+--
+-- KOLOM HASIL
+--   Satu kolom: nama
+--   Urutan baris DINILAI, jadi wajib pakai ORDER BY.
+--
+-- TABEL YANG DIPAKAI
+--   pegawai(id, nama, divisi, aktif)
+--   Data contoh yang kamu lihat: ../data/seed-visible.sql
+--
+-- CARA MENGERJAKAN
+--   1. Tulis SATU query SELECT (boleh diawali WITH), ditutup titik koma,
+--      di bawah baris terakhir komentar ini. Jangan ubah file lain.
+--   2. Jalankan tes dari folder core/sql (bukan dari folder queries):
+--        ./mvnw test -Dtest=W1Sql01Test       (Windows: mvnw.cmd test -Dtest=W1Sql01Test)
+--      Sebelum kamu menulis query, tes gagal dengan "File jawaban kosong". Itu normal.
+--   3. Kalau tes gagal, baca baris pertama pesannya. Artinya ada di core/sql/README.md.
+--   4. Kalau sudah hijau: commit, push, buka pull request ke main, lalu merge.
+--
+-- CATATAN: penilai memakai data lain yang tidak kamu lihat, jadi jangan menulis
+-- query yang hanya cocok untuk data contoh. Komentar tidak ikut dinilai.
+--
 -- Tulis query kamu di bawah baris ini
