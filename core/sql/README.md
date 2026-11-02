@@ -8,6 +8,13 @@ Kamu menulis query untuk aplikasi **SiPenugasan**. Tabelnya ada di [data/schema.
 | `proyek` | `id`, `nama`, `klien` |
 | `penugasan` | `pegawai_id`, `proyek_id`, `jam` |
 
+## Cara mengerjakan
+
+1. Buka `queries/w1-sql-01.sql`. Di bagian atas file ada soal dan petunjuknya. Tulis **satu query** di bawah baris `-- Tulis query kamu di bawah baris ini`.
+2. Jalankan tes dari folder `core/sql`: `./mvnw test -Dtest=W1Sql01Test` (Windows: `mvnw.cmd test -Dtest=W1Sql01Test`). Ganti `01` dengan `02` atau `03` untuk soal lain, atau jalankan `./mvnw test` untuk semuanya.
+3. Kalau sudah hijau: commit, push, buka pull request ke `main`, lalu merge. Penilai membaca isi `main`.
+4. Ulangi untuk `w1-sql-02.sql` dan `w1-sql-03.sql`.
+
 ## Aturan
 
 - Tulis **satu query `SELECT`** (boleh diawali `WITH`) di file `queries/w1-sql-0N.sql`, di bawah baris komentar.
