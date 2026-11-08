@@ -1,0 +1,41 @@
+# Membangun image dan menjalankan compose latihan DevOps 3 sungguhan, lalu memanggil API.
+# Hanya umpan balik untukmu: hasil workflow ini TIDAK dinilai.
+name: Uji Docker DevOps 3
+
+on:
+  push:
+    paths: ["devops3/**", ".github/workflows/uji-docker-devops3.yml"]
+  pull_request:
+    paths: ["devops3/**", ".github/workflows/uji-docker-devops3.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  uji-docker:
+    # Di repo template berkas jawaban masih starter, jadi compose pasti gagal.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: devops3
+    steps:
+      - uses: actions/checkout@v7
+      - name: Buat .env dengan password acak
+        run: echo "POSTGRES_PASSWORD=$(openssl rand -hex 16)" > .env
+      - name: Bangun dan jalankan compose
+        run: docker compose up --build --wait --wait-timeout 120
+      - name: GET /health menjawab 200
+        run: curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 2 http://localhost:3000/health
+      - name: GET /pegawai berisi lima pegawai dari database
+        run: |
+          jumlah=$(curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 2 http://localhost:3000/pegawai | jq length)
+          echo "jumlah pegawai: $jumlah"
+          test "$jumlah" = "5"
+      - name: Log compose (bila gagal)
+        if: failure()
+        run: docker compose logs --no-color
+      - name: Bersihkan
+        if: always()
+        run: docker compose down -v
