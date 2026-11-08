@@ -107,6 +107,10 @@ function polaDockerignore(teks) {
 
 function keRegex(pola) {
   const bersih = pola.replace(/^\/+/, "").replace(/\/+$/, "");
+  // folder/** dan folder/* membuang seluruh isi folder; folder kosong yang tersisa tidak berpengaruh
+  // pada build, jadi dianggap sama dengan mengabaikan folder itu.
+  const isiFolder = /^(.+)\/\*\*?$/.exec(bersih);
+  if (isiFolder && !isiFolder[1].includes("*")) return new RegExp(`${keRegex(isiFolder[1]).source.slice(0, -1)}(?:/.*)?$`);
   let re = "";
   for (let i = 0; i < bersih.length; i++) {
     const c = bersih[i];

@@ -1,7 +1,8 @@
 const b = require("../lib/bantu");
 
 const BUILD_APP = new Set(["./app", "app", "./app/"]);
-const interpolasi = (nilai) => /^\$\{[A-Za-z_][A-Za-z0-9_]*(:?[-?][^}]*)?\}$/.test(nilai);
+// Interpolasi tanpa nilai bawaan: ${X}, ${X:?pesan}. ${X:-bawaan} berarti password tetap tertulis.
+const interpolasi = (nilai) => /^\$\{[A-Za-z_][A-Za-z0-9_]*(:?\?[^}]*)?\}$/.test(nilai);
 
 describe("d3-compose-01: compose.yaml", () => {
   test("api dibangun dari ./app, port 3000:3000, menunggu db service_healthy", () => {
@@ -19,7 +20,7 @@ describe("d3-compose-01: compose.yaml", () => {
     const url = b.uraiDatabaseUrl(env.DATABASE_URL);
     if (!url) b.gagal("DATABASE_URL harus berbentuk postgres://user:password@host:5432/database");
     if (url.host !== "db") b.gagal("host di DATABASE_URL harus nama service database (db), bukan localhost");
-    if (!url.password || !interpolasi(url.password)) b.gagal("password di DATABASE_URL tidak boleh tertulis; pakai ${...}");
+    if (!url.password || !interpolasi(url.password)) b.gagal("password di DATABASE_URL tidak boleh tertulis; pakai ${POSTGRES_PASSWORD} tanpa nilai bawaan");
   });
 
   test("db memakai postgres:18 dengan volume /var/lib/postgresql, init.sql, dan pg_isready", () => {

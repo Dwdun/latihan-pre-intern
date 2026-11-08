@@ -85,6 +85,14 @@ describe(".dockerignore", () => {
     }
   });
 
+  test("pola folder/** dan folder/* mengabaikan folder itu beserta isinya", () => {
+    for (const pola of ["node_modules/**", "node_modules/*"]) {
+      expect([pola, cek(pola, "node_modules")]).toEqual([pola, true]);
+      expect([pola, cek(pola, "node_modules/express/index.js")]).toEqual([pola, true]);
+      expect([pola, cek(pola, "server.js")]).toEqual([pola, false]);
+    }
+  });
+
   test("bintang tidak melewati garis miring, dua bintang melewatinya", () => {
     expect(cek("*.log", "error.log")).toBe(true);
     expect(cek("*.log", "log/error.log")).toBe(false);
