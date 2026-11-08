@@ -18,7 +18,7 @@ API Express dengan `GET /pegawai`. Pastikan:
 - `module.exports = { app, konfigurasiDengar }`,
 - `konfigurasiDengar(env)` mengembalikan `{ port, host }`: port dari `env.PORT` bila bilangan bulat 1-65535, selain itu `3000`; host `'0.0.0.0'`,
 - `app.listen` hanya dipanggil bila berkas dijalankan langsung (`require.main === module`), memakai hasil `konfigurasiDengar`,
-- `GET /health` menjawab status 200 dengan JSON `{ "status": "ok" }`.
+- `GET /health` menjawab status 200 dengan JSON persis `{ "status": "ok" }`, tanpa field lain.
 
 ### d2-env-01: `app/env.contoh`
 
@@ -39,7 +39,7 @@ Blueprint Render untuk API ini. Berkas ini ada di akar `devops2/`, tetapi repo y
 
 - `type: web`, `runtime: node`, dan `plan: free`,
 - `rootDir` menunjuk folder aplikasi (tempat `package.json` API berada) dari akar repo,
-- `buildCommand: npm ci` dan `startCommand` yang menjalankan berkas server yang ada,
+- `buildCommand: npm ci` dan `startCommand: node server.js`,
 - `healthCheckPath: /health`.
 
 ## Menjalankan tes
