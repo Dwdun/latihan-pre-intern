@@ -1,4 +1,4 @@
-const b = require("./bantu");
+const b = require("../lib/bantu");
 
 const instruksi = () => b.tahapAkhir(b.uraiDockerfile(b.bacaTeks("app/Dockerfile")));
 const indeks = (daftar, cocok) => daftar.findIndex(cocok);

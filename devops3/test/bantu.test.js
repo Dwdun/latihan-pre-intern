@@ -2,7 +2,7 @@
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
-const b = require("./bantu");
+const b = require("../lib/bantu");
 
 const tanpaBaris = (daftar) => daftar.map(({ instruksi, argumen }) => ({ instruksi, argumen }));
 

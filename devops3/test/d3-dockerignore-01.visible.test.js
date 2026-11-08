@@ -1,4 +1,4 @@
-const b = require("./bantu");
+const b = require("../lib/bantu");
 
 const pola = () => b.polaDockerignore(b.bacaTeks("app/.dockerignore"));
 
