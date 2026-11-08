@@ -109,6 +109,30 @@ jobs:
       - run: npm ci
       - run: npm run cek
 
+  devops:
+    # Di repo template file jawaban masih starter, jadi tes ini pasti gagal; job "starter" memeriksanya.
+    if: ${{ !github.event.repository.is_template }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: devops
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: |
+            devops/package-lock.json
+            devops/app/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - name: Bangun aplikasi contoh
+        working-directory: devops/app
+        run: |
+          npm ci
+          npm run build
+
   # Hanya di repo template: setiap starter harus gagal dengan pesan yang dijanjikan README.
   starter:
     if: ${{ github.event.repository.is_template }}
@@ -124,7 +148,7 @@ jobs:
         with:
           node-version: "24"
       - name: Pasang dependensi Node
-        run: for d in core/json dev/react qa/unit qa/api; do (cd "$d" && npm ci); done
+        run: for d in core/json dev/react qa/unit qa/api devops; do (cd "$d" && npm ci); done
       - name: Starter gagal dengan pesan yang benar
         shell: bash
         run: |
@@ -145,3 +169,4 @@ jobs:
           cek dev/java "Belum dikerjakan" ./mvnw -B -q test
           cek qa/unit "Belum ada tes yang berjalan" npm run cek
           cek qa/api "Belum ada tes yang berjalan" npm run cek
+          cek devops "Belum benar" npm test

@@ -1,0 +1,19 @@
+# Workflow deploy SiPenugasan. Perbaiki sampai tes terlihat lulus.
+name: Deploy
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_TOKEN: vercel_token_palsu_jangan_dipakai_1234567890
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npx vercel deploy --prod --token "$VERCEL_TOKEN"
