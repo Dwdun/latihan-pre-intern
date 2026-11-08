@@ -1,3 +1,4 @@
+const net = require("net");
 const { gagal, muatServer, jalankan } = require("./bantu");
 
 describe("d2-server-01: app/server.js", () => {
@@ -15,6 +16,30 @@ describe("d2-server-01: app/server.js", () => {
     if (!hasil || hasil.host !== "0.0.0.0") {
       gagal("konfigurasiDengar harus mengembalikan host '0.0.0.0'");
     }
+  });
+
+  test("app.listen hanya dipanggil bila berkas dijalankan langsung", () => {
+    // Pura-pura listen agar tidak ada port yang benar-benar terbuka.
+    const mata = jest.spyOn(net.Server.prototype, "listen").mockImplementation(function () {
+      return this;
+    });
+    let galatMuat;
+    try {
+      jest.isolateModules(() => {
+        try {
+          require("../app/server.js");
+        } catch (e) {
+          galatMuat = e;
+        }
+      });
+    } finally {
+      const dipanggil = mata.mock.calls.length;
+      mata.mockRestore();
+      if (dipanggil > 0) {
+        gagal("app.listen hanya boleh dipanggil bila berkas dijalankan langsung (require.main === module)");
+      }
+    }
+    if (galatMuat) gagal(`server.js tidak bisa dimuat (${galatMuat.message})`);
   });
 
   describe("GET /health", () => {

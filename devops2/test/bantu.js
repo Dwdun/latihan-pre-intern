@@ -19,7 +19,7 @@ function bacaTeks(relatif) {
     gagal(`berkas ${relatif} tidak bisa dibaca`);
   }
   if (buf.length > BATAS_BYTE) gagal(`berkas ${relatif} terlalu besar`);
-  return buf.toString("utf8").replace(/^﻿/, "").replace(/\r\n?/g, "\n");
+  return buf.toString("utf8").replace(/^\uFEFF/, "").replace(/\r\n?/g, "\n");
 }
 
 // Muat app/server.js; kesalahan saat memuat menjadi pesan "Belum benar:".

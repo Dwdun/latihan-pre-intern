@@ -69,6 +69,7 @@ Semua pesan kegagalan diawali `Belum benar:` lalu menyebut apa yang salah.
 | `Belum benar: berkas ... tidak bisa dibaca` | Berkas jawaban hilang atau salah nama. |
 | `Belum benar: server.js tidak bisa dimuat` | Ada error saat `server.js` dimuat (sintaks atau modul tidak ditemukan). |
 | `Belum benar: server.js harus mengekspor { app, konfigurasiDengar }` | `module.exports` belum sesuai. |
+| `Belum benar: app.listen hanya boleh dipanggil bila berkas dijalankan langsung` | `app.listen` dipanggil saat berkas dimuat; bungkus dengan `require.main === module`. |
 | `Belum benar: konfigurasiDengar({ PORT: '4321' }) harus memberi port 4321` | Port belum dibaca dari `env.PORT` sebagai angka. |
 | `Belum benar: konfigurasiDengar harus mengembalikan host '0.0.0.0'` | Server belum diatur mendengar di semua antarmuka. |
 | `Belum benar: GET /health harus status 200` | Endpoint `/health` belum ada atau salah jawab. |
@@ -79,6 +80,7 @@ Semua pesan kegagalan diawali `Belum benar:` lalu menyebut apa yang salah.
 | `Belum benar: variabel ... muncul lebih dari sekali` | Nama variabel ganda. |
 | `Belum benar: variabel ... terlihat seperti rahasia` | Nama memuat `TOKEN`, `SECRET`, `PASSWORD`, atau `KEY` tetapi nilainya bukan `GANTI_DI_DASHBOARD`. |
 | `Belum benar: variabel NODE_ENV belum ada` / `ASAL_CORS` | Variabel wajib belum didaftarkan. |
+| `Belum benar: NODE_ENV harus bernilai production` | Nilai `NODE_ENV` salah. |
 | `Belum benar: render.yaml bukan YAML yang valid` | Indentasi atau sintaks YAML rusak. |
 | `Belum benar: plan harus free` | `plan` belum ditulis (bawaan Render bukan `free`). |
 | `Belum benar: rootDir harus devops2/app` | `rootDir` belum menunjuk folder aplikasi. |

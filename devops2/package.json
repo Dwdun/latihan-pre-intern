@@ -9,6 +9,7 @@
     "node": ">=24"
   },
   "jest": {
+    "forceExit": true,
     "testPathIgnorePatterns": ["/node_modules/", "<rootDir>/app/"]
   },
   "dependencies": {
