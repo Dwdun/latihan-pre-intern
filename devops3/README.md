@@ -7,7 +7,7 @@ API SiPenugasan di folder [app/](app/) membaca tabel `pegawai` dari Postgres, te
 - Ubah **hanya** tiga berkas: `app/Dockerfile`, `app/.dockerignore`, dan `compose.yaml`.
 - Tes hanya **membaca** berkas jawabanmu sebagai teks. Tes tidak membangun image dan tidak menjalankan Docker.
 - Penilai memeriksa berkas yang sama dengan aturan yang lebih lengkap. Jangan hanya mengejar tes terlihat; pahami alasannya dari materi.
-- Jangan mengubah `app/server.js`, `app/package.json`, lockfile, `db/init.sql`, maupun berkas di `test/`.
+- Jangan mengubah `app/server.js`, `app/package.json`, lockfile, `db/init.sql`, maupun berkas di `lib/` dan `test/`.
 
 ## Soal
 

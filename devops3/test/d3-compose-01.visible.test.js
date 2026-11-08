@@ -1,4 +1,4 @@
-const b = require("./bantu");
+const b = require("../lib/bantu");
 
 const BUILD_APP = new Set(["./app", "app", "./app/"]);
 const interpolasi = (nilai) => /^\$\{[A-Za-z_][A-Za-z0-9_]*(:?[-?][^}]*)?\}$/.test(nilai);
