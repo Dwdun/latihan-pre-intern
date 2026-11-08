@@ -1,0 +1,16 @@
+{
+  "name": "sipenugasan-api-docker",
+  "private": true,
+  "description": "API SiPenugasan dengan Postgres untuk latihan DevOps 3",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "pg": "^8.23.1"
+  }
+}

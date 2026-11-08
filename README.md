@@ -12,14 +12,15 @@ Repository template untuk latihan kode modul pre-intern. Sepanjang modul kamu me
 | [qa/api](qa/api/README.md) | Menulis tes API yang menangkap bug (`w3-qa-api-01`, `02`) | 3 | QA |
 | [devops](devops/README.md) | Memperbaiki konfigurasi CI, env, dan deploy (`d1-ci-01`, `d1-env-01`, `d1-rahasia-01`) | kursus DevOps 1 | DevOps |
 | [devops2](devops2/README.md) | Menyiapkan API untuk deploy: server, env, dan blueprint Render (`d2-server-01`, `d2-env-01`, `d2-blueprint-01`) | kursus DevOps 2 | DevOps |
+| [devops3](devops3/README.md) | Membungkus API dengan Docker: Dockerfile, .dockerignore, dan compose API + Postgres (`d3-dockerfile-01`, `d3-dockerignore-01`, `d3-compose-01`) | kursus DevOps 3 | DevOps |
 
-Kerjakan folder `core/` dan folder jalurmu saja (`dev/` untuk Developer, `qa/` untuk QA). Kandidat kursus DevOps 1 hanya mengerjakan folder `devops/`; kandidat kursus DevOps 2 hanya mengerjakan folder `devops2/`. Latihan jalur lain tidak dinilai.
+Kerjakan folder `core/` dan folder jalurmu saja (`dev/` untuk Developer, `qa/` untuk QA). Kandidat kursus DevOps 1 hanya mengerjakan folder `devops/`; kandidat kursus DevOps 2 hanya mengerjakan folder `devops2/`; kandidat kursus DevOps 3 hanya mengerjakan folder `devops3/`. Latihan jalur lain tidak dinilai.
 
 ## Prasyarat
 
 - JDK **25** (Eclipse Temurin), Node.js **24 LTS**, dan Git. Lihat materi **Setup Lingkungan Kerja** di Frappe LMS.
 - Maven tidak perlu dipasang. Gunakan `./mvnw` (Windows: `.\mvnw.cmd`).
-- Setiap folder JavaScript (`core/json`, `dev/react`, `qa/unit`, `qa/api`, `devops`, `devops2`) punya `package.json` sendiri. Jalankan `npm install` di folder itu sekali sebelum `npm test`.
+- Setiap folder JavaScript (`core/json`, `dev/react`, `qa/unit`, `qa/api`, `devops`, `devops2`, `devops3`) punya `package.json` sendiri. Jalankan `npm install` di folder itu sekali sebelum `npm test`.
 
 ## Langkah memulai (wajib, bagian dari Checkpoint 1)
 
@@ -27,7 +28,7 @@ Kerjakan folder `core/` dan folder jalurmu saja (`dev/` untuk Developer, `qa/` u
 2. Buka **Settings → Collaborators → Add people**, lalu undang akun validator: **`syaripudinarif834`**.
 3. Clone repo milikmu ke komputer.
 4. Buat branch: `git switch -c fitur/latihan-minggu-1`.
-5. Kerjakan file di `core/sql/queries/` dan `core/json/src/` (kandidat DevOps 1: `devops/latihan/`; DevOps 2: `devops2/`). Jalankan tes lokal sesering mungkin.
+5. Kerjakan file di `core/sql/queries/` dan `core/json/src/` (kandidat DevOps 1: `devops/latihan/`; DevOps 2: `devops2/`; DevOps 3: `devops3/`). Jalankan tes lokal sesering mungkin.
 6. Commit, lalu push branch-mu: `git push -u origin fitur/latihan-minggu-1`.
 7. Buka **pull request** ke `main` dengan deskripsi singkat, lalu **merge**.
 8. Serahkan URL repo di Frappe LMS (tugas "Serahkan repo latihan").
@@ -47,6 +48,8 @@ Penilai memeriksa bahwa repo dibuat dari template ini, ada PR dari branch fitur 
   Kursus DevOps 1: `devops/latihan/ci.yml`, `devops/latihan/env.contoh`, `devops/latihan/deploy.yml`.
 
   Kursus DevOps 2: `devops2/app/server.js`, `devops2/app/env.contoh`, `devops2/render.yaml`.
+
+  Kursus DevOps 3: `devops3/app/Dockerfile`, `devops3/app/.dockerignore`, `devops3/compose.yaml`.
 
 - Perubahan pada file lain, termasuk tes terlihat (`src/test`, `dev/react/test/`), data (`data/`), implementasi QA (`qa/*/src/`), atau workflow (`.github/`), **tidak berpengaruh**, karena penilai memakai salinan miliknya sendiri dan tes dengan data lain.
 - Untuk latihan QA, file tesmu **adalah** jawabannya: penilai menjalankannya terhadap implementasi benar dan beberapa versi berbug yang tidak kamu lihat. Lihat README `qa/unit`.

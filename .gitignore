@@ -4,3 +4,4 @@ target/
 .vscode/
 *.iml
 dist/
+devops3/.env

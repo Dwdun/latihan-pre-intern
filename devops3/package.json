@@ -1,0 +1,21 @@
+{
+  "name": "latihan-devops3",
+  "private": true,
+  "description": "Latihan DevOps 3 SiPenugasan",
+  "scripts": {
+    "test": "jest"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/app/"
+    ]
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "yaml": "^2.9.1"
+  }
+}
