@@ -17,7 +17,8 @@ Workflow CI untuk aplikasi SiPenugasan. Pastikan workflow:
 
 - berjalan saat `push` dan `pull_request`,
 - memakai Node 24,
-- menjalankan `npm ci` sebelum `npm test`.
+- menjalankan `npm ci` sebelum `npm test`,
+- mengikuti langkah dan pengaturan standar workflow CI proyek Node dari materi d1-02.
 
 ### d1-env-01: `latihan/env.contoh`
 
